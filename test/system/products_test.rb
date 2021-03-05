@@ -21,4 +21,22 @@ class ProductsTest < ApplicationSystemTestCase
 
     assert_text "Frontpage of the internet"
   end
+
+
+
+  test "updating a product" do
+    login_as users(:george)
+    product_1 = products(:product_1)
+    visit edit_product_path(product_1)
+    fill_in "product_name", with: "Reddit 2"
+    fill_in "product_tagline", with: "Frontpage of my personnal internet"
+
+    click_on 'Update Product'
+
+    #save_and_open_screenshot
+    assert_equal root_path, page.current_path
+
+    assert_text "Frontpage of my personnal internet"
+
+  end
 end
