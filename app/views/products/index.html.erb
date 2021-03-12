@@ -6,6 +6,7 @@
         <strong> <%= product.name %> </strong>
         <small class="text-muted"> <%= product.tagline %> </small>
       </div>
+      <%= link_to "delete", product_path(product), method: :delete %>
     </div>
   <% end %>
 </div>
